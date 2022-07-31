@@ -12,14 +12,23 @@ public class Sale {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne
     private Equipment equipment;
 
-    @OneToOne
+    @ManyToOne
     private Client client;
 
-    @OneToOne
+    @ManyToOne
     private Vendor vendor;
+
+    public Sale() {
+    }
+
+    public Sale(Equipment equipment, Client client, Vendor vendor) {
+        this.equipment = equipment;
+        this.client = client;
+        this.vendor = vendor;
+    }
 
     @Override
     public String toString() {

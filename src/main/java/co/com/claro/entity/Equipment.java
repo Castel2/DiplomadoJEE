@@ -25,6 +25,16 @@ public class Equipment {
     @Column(nullable = false)
     private Long quantity;
 
+    public Equipment() {
+    }
+
+    public Equipment(String name, String brand, BigDecimal price, Long quantity) {
+        this.name = name;
+        this.brand = brand;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     @Override
     public String toString() {
         return "Equipment{" +

@@ -9,6 +9,9 @@ import co.com.claro.services.EquipmentServiceImpl;
 import co.com.claro.services.SaleServiceImpl;
 import co.com.claro.services.VendorServiceImpl;
 import jakarta.inject.Inject;
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonReader;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -16,7 +19,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,32 +43,50 @@ public class SaleServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Vendor vendor = new Vendor();
-        vendor.setId(Long.valueOf(req.getParameter("id_vendor")));
-        vendor = vendorService.findById(vendor.getId());
+        StringBuffer jb = new StringBuffer();
+        String line = null;
+        try {
+            BufferedReader reader = req.getReader();
+            while ((line = reader.readLine()) != null)
+                jb.append(line);
+        } catch (Exception e) {
+            throw new IOException("Error parsing JSON request string");
+        }
+
+        JsonReader jsonReader = Json.createReader(new StringReader(jb.toString()));
+        JsonObject jsonObject = jsonReader.readObject();
+
+        String vendedor = jsonObject.getString("id_vendor");
+        String equipo = jsonObject.getString("id_equipment");
+        String cliente = jsonObject.getString("id_client");
 
         Equipment equipment = new Equipment();
-        equipment.setId(Long.valueOf(req.getParameter("id_equipment")));
-        equipment = equipmentService.findById(equipment.getId());
+        equipment = equipmentService.findById(Long.valueOf(equipo));
         equipment.setQuantity(equipment.getQuantity() - 1);
 
-        Client client = new Client();
-        client.setId(Long.valueOf(req.getParameter("id_client")));
-        client = clientService.findById(client.getId());
-
-        Sale sale = new Sale();
-        sale.setClient(client);
-        sale.setEquipment(equipment);
-        sale.setVendor(vendor);
-        saleService.save(sale);
-        equipmentService.save(equipment);
+        Sale sale = new Sale(equipment, clientService.findById(Long.valueOf(cliente)), vendorService.findById(Long.valueOf(vendedor)));
+        Sale saleGuardado = saleService.save(sale);
+        Equipment equipmentGuardado = equipmentService.save(equipment);
+        PrintWriter pw = resp.getWriter();
+        pw.println(saleGuardado.toString());
+        pw.println(equipmentGuardado.toString());
 
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Sale> saleList = new ArrayList<>();
-        saleList =  saleService.findAll();
+        List<Sale> saleList = saleService.findAll();
+        PrintWriter pw = resp.getWriter();
+        for (Sale iter: saleList) {
+            pw.println(iter.getClient().getName());
+            pw.println(iter.getClient().getDni());
+            pw.println(iter.getEquipment().getName());
+            pw.println(iter.getEquipment().getBrand());
+            pw.println(iter.getEquipment().getPrice());
+            pw.println(iter.getVendor().getName());
+            pw.println(iter.getVendor().getTypeVendor().getType());
+            pw.println(iter.getVendor().getCity());
+        }
     }
 
 

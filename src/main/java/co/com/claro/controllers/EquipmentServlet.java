@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.StringReader;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -27,13 +28,6 @@ public class EquipmentServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Equipment equipment = new Equipment();
-        equipment.setName(req.getParameter("name"));
-        equipment.setBrand(req.getParameter("brand"));
-        equipment.setPrice(BigDecimal.valueOf(Long.valueOf(req.getParameter("price"))));
-        equipment.setQuantity(Long.valueOf(req.getParameter("quantity")));
-        equipmentService.save(equipment);
-
         StringBuffer jb = new StringBuffer();
         String line = null;
         try {
@@ -47,12 +41,26 @@ public class EquipmentServlet extends HttpServlet {
         JsonReader jsonReader = Json.createReader(new StringReader(jb.toString()));
         JsonObject jsonObject = jsonReader.readObject();
 
+        String nombre = jsonObject.getString("name");
+        String marca = jsonObject.getString("brand");
+        String precio = jsonObject.getString("price");
+        String cantidad = jsonObject.getString("quantity");
+        Equipment equipment = new Equipment(nombre, marca, BigDecimal.valueOf(Long.valueOf(precio)), Long.valueOf(cantidad));
+        Equipment equipmentGuardado = equipmentService.save(equipment);
+        PrintWriter pw = resp.getWriter();
+        pw.println(equipmentGuardado.toString());
 
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Equipment> equipmentList = new ArrayList<>();
-        equipmentList =  equipmentService.findAll();
+        List<Equipment> equipmentList = equipmentService.findAll();
+        PrintWriter pw = resp.getWriter();
+        for (Equipment iter: equipmentList) {
+            pw.println(iter.getName());
+            pw.println(iter.getBrand());
+            pw.println(iter.getPrice());
+            pw.println(iter.getQuantity());
+        }
     }
 }

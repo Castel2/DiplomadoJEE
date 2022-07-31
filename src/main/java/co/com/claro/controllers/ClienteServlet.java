@@ -42,7 +42,6 @@ public class ClienteServlet  extends HttpServlet {
 
         String nombre = jsonObject.getString("nombre");
         String cedula = jsonObject.getString("cedula");
-        String celular = jsonObject.getString("celular");
 
         Client client = new Client(nombre,Long.valueOf(cedula),sale);
         Client cliente = clientService.save(client);
