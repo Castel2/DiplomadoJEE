@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6a6b6190-1f44-4aca-9a35-eff89b222a2e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/com/claro/controllers/ClienteServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/com/claro/controllers/EquipmentServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/com/claro/controllers/SaleServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/com/claro/controllers/VendorServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/com/claro/entity/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/com/claro/entity/Equipment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/com/claro/entity/Sale.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/com/claro/entity/TypeVendor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/com/claro/entity/Vendor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/com/claro/services/ClientServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/com/claro/services/EquipmentServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/com/claro/services/SaleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/com/claro/services/Service.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/com/claro/services/TypeVendorServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/com/claro/services/VendorServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/co/com/claro/TestClaro.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2CY9nfvgiMNN9Tr6N4AaEv1eFXf" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/Nueva carpeta/ClaroNuestro/claro/claro/claro"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="TestClaro.testCreateDB" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="claro" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="co.com.claro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="co.com.claro" />
+      <option name="MAIN_CLASS_NAME" value="co.com.claro.TestClaro" />
+      <option name="METHOD_NAME" value="testCreateDB" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestClaro.testCreateDB" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6a6b6190-1f44-4aca-9a35-eff89b222a2e" name="Changes" comment="" />
+      <created>1658968820331</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1658968820331</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
